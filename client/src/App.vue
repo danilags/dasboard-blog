@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
-    <nav-bar :statusLogin="statusLogin"></nav-bar>
+    <nav-bar :statusLogin="statusLogin" :username="username" :idUser="id_user"></nav-bar>
     <router-view></router-view>
   </div>
 </template>
@@ -12,8 +12,9 @@ import NavBar from './components/NavBar'
 export default {
   data() {
     return {
-      statusLogin : false
-
+      statusLogin : false,
+      username: localStorage.getItem('username'),
+      id_user: localStorage.getItem('id')
     }
   },
   components: {

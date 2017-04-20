@@ -35,13 +35,15 @@ let getAll = function(req, res) {
 }
 
 let userFindOne = function(req, res) {
-  db.findOne({_id: req.params.id}, function(err, result) {
-    if (!err) {
-      res.send({success: true, msg: "Success", data: result})
-    } else{
-      res.send({success: false, msg: "Gagal get data",  data:null})
-    }
-  })
+  db.findOne({_id: req.params.id})
+    .populate({path: 'article'})
+    .exec(function(err, result) {
+      if (!err) {
+        res.send({success: true, msg: "Success", data: result})
+      } else{
+        res.send({success: false, msg: "Gagal get data",  data:null})
+      }
+    })
 }
 
 let deleteUser = function(req, res) {

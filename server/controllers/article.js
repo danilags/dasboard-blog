@@ -40,8 +40,36 @@ let getAll = function(req, res) {
     })
 }
 
+let updateArticle = function(req, res) {
+  db.findByIdAndUpdate(req.params.id, {
+    $set : {
+      title         : req.body.title,
+      content       : req.body.content,
+      updateAt      : new Date
+    }
+  }, function(err, data) {
+    if (err) {
+      res.send(err)
+    } else {
+      res.send(data)
+    }
+  })
+}
+
+let deleteArticle = function(req, res) {
+  db.findByIdAndRemove(req.params.id, function(err, data) {
+    if (err) {
+      res.send(err)
+    } else {
+      res.send("Article berhasil di hapus !")
+    }
+  })
+}
+
 module.exports = {
   createArticle,
-  getAll
+  getAll,
+  updateArticle,
+  deleteArticle
 
 }
