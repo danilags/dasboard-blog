@@ -3,7 +3,9 @@
     <h3>Welcome Home</h3>
     <div class="list-article">
       <ul v-for="article in articles">
-        <li> {{ article.title }}</li>
+        <li><h3>{{ article.title }}</h3></li>
+        <li><p>{{ article.content }}</p></li>
+        <li><span>By: {{ article.author.name }}</span></li>
       </ul>
     </div>
   </div>
@@ -23,12 +25,12 @@ export default {
       let self = this
       axios.get('http://localhost:3000/articles')
             .then(function(res) {
-              // console.log(res);
-              self.articles.push(res.data)
+              res.data.forEach(function(data) {
+                self.articles.push(data)
+              })
             }).catch(function(err) {
               console.log(err);
             })
-            console.log(self.articles);
     }
   },
   mounted() {
@@ -38,4 +40,13 @@ export default {
 </script>
 
 <style lang="css">
+.list-article ul {
+    list-style: none;
+    text-align: left;
+}
+
+.list-article p {
+    width: 60%;
+    text-align: justify;
+}
 </style>

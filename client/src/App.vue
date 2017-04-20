@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
-    <nav-bar></nav-bar>
+    <nav-bar :statusLogin="statusLogin"></nav-bar>
     <router-view></router-view>
   </div>
 </template>
@@ -10,8 +10,21 @@
 import NavBar from './components/NavBar'
 
 export default {
+  data() {
+    return {
+      statusLogin : false
+
+    }
+  },
   components: {
     NavBar
+  },
+  mounted() {
+    if (window.localStorage.getItem('token')) {
+      this.statusLogin = true
+    } else {
+      this.statusLogin = false
+    }
   }
 }
 </script>

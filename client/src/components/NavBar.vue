@@ -6,6 +6,7 @@
       <router-link to="/list"><el-menu-item index="2">List</el-menu-item></router-link>
       <router-link to="/login"><el-menu-item style="float: right;" index="3">Login</el-menu-item></router-link>
       <router-link to="/user"><el-menu-item style="float: right;" index="3">Profil</el-menu-item></router-link>
+      <router-link to="/signup"><el-menu-item style="float: right;" index="3">Register</el-menu-item></router-link>
       <router-link to="/logout"><el-menu-item style="float: right;" index="3">Logout</el-menu-item></router-link>
     </el-menu>
   </div>
