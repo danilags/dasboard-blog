@@ -33,27 +33,7 @@ export default {
     }
   },
   methods: {
-    signIn() {
-      let self = this
-      axios.post('http://localhost:3000/login', {
-        username: self.user.username,
-        password: self.user.password
-      }).then(function(res) {
-        console.log(res);
-        if (res.data.success) {
-          window.localStorage.setItem('token', res.data.token)
-          window.localStorage.setItem('id', res.data.id)
-          window.localStorage.setItem('username', res.data.username)
-          window.location.reload()
-          window.alert("Your Login success !");
-          window.location.href = 'http://localhost:8080/';
-        } else {
-          self.showError(res.data.msg)
-        }
-      }).catch(function(err) {
-        console.log(err);
-      })
-    },
+    
     showError(msg) {
       this.$message({
         showClose: true,
